@@ -42,4 +42,4 @@ You may have to change the paths to the corresponding files.
 ## Theme
 I am using the *ef-day* theme from the *ef-themes* package by Protesilaos Stavro--the humble, accomplished, and inspiring Emacsen of YouTube Fame.
 
-<p align="center"><img src="./images/ef-day-example.png" alt="HTML5 Icon" style="width:410px;height:184px;"></p>
+<p align="center"><img src="./images/ef-day-example.png" alt="HTML5 Icon" style="width:819px;height:369px;"></p>
