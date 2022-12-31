@@ -30,7 +30,7 @@ I do this so that I only need to maintain one set of snippet files.
 This can cause newly added snippets not to appear in the pulldown menu.
 Hidden files listing the compiled snippets may be interferring with the addition of new snippets.
 The solution is to enter in the snippets directory the following bash command: **rm -rf ./\*/.yas-compiled-snippets.el**. 
-Then select **reload everything** from the the yasnippets pulldown menu or enter the correspoinding commands in the mini-buffer: `M-x yas-recompile-all' and `M-x yas-reload-all'.
+Then select **reload everything** from the the yasnippets pulldown menu or enter the correspoinding commands in the mini-buffer: **M-x yas-recompile-all** and **M-x yas-reload-all**.
 
 ## Structure of the init.el file
 The first part of the `init.el' file has the essential package repository information followed by some basic configurations that are package indepenent.
