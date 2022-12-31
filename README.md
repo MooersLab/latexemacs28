@@ -40,6 +40,6 @@ You will likely want to adjust to suit or comment out.
 You may have to change the paths to the corresponding files.
 
 ## Theme
-I am using the *ef-day* theme from the *ef-themes* package by Protesilaos Stavro--the humble but accomplished philosophizing Emacsen of YouTube Fame.
+I am using the *ef-day* theme from the *ef-themes* package by Protesilaos Stavro--the humble, accomplished, and inspiring Emacsen of YouTube Fame.
 
 
