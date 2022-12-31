@@ -25,7 +25,7 @@ On a 2018 MacBook Pro, Emacs finishes loading and garbage collecting in 17 secon
 ## Notes
 - The dashboard does not display in a buffer on startup. Invoke and switch to its buffer with Fn-F1.
 
-- I source my yasnippets snippets folder from my default Emacs configuration by using a softlink to the snippets folder in `~./.emacs.defualt30' so adjust as needed.
+- I source my yasnippets snippets folder from my default Emacs configuration by using a softlink to the snippets folder in *~./.emacs.defualt30* so adjust as needed.
 I do this so that I only need to maintain one set of snippet files.
 This can cause newly added snippets not to appear in the pulldown menu.
 Hidden files listing the compiled snippets may be interferring with the addition of new snippets.
