@@ -915,6 +915,19 @@
   (add-hook 'after-init-hook #'global-emojify-mode))
 
 
+;; Eros: Evaluation Result OverlayS for Emacs Lisp.
+;; Eros is on MELPA.
+;; Eros is by Tianxiang Xiong.
+;; He has developed two other Emacs Lisp Packages.
+;; https://github.com/xiongtx/eros
+;; Eros provides Cider like behavoir for elisp with the output resturned in-line.
+;; I learned about eros from yantar92 during the 2023-01-01 meeting of Mastering Emacs bookclub.
+
+(use-package eros
+      :ensure t
+      :init
+      (eros-mode 1))
+
 
 ;; *** eshell related functions
 ;; source: Mickey Petersen https://www.masteringemacs.org/article/pcomplete-context-sensitive-completion-emacs
@@ -1128,11 +1141,52 @@
 ;;;;        (lambda (event) (bibtex-completion-candidates))))
 ;;
 
+
+;; I was reminded about the helpful package by yantar92 during the 2023-01-01 meeting of Mastering Emacs bookclub.
+;; Yantar92 has 23 Emacs Lisp repos on GitHub: https://github.com/yantar92?tab=repositories&q=&type=&language=emacs+lisp&sort=
+;; Most are org-mode related.
+;; yantar92 also shows up at the Berlin Emacs meeting.
+;;
+;; Helfpful does look to be more useful than the built-in help commands.
+;; I have remapped the keybindings as suggested by the developer Wilfred Hughes https://github.com/Wilfred/helpful
+;; He is a Emacs power users with 141 repos in Emacs Lisp.
+(use-package helpful
+  :ensure t)
+
+;; Note that the built-in `describe-function' includes both functions
+;; and macros. `helpful-function' is functions only, so we provide
+;; `helpful-callable' as a drop-in replacement.
+(global-set-key (kbd "C-h f") #'helpful-callable)
+
+(global-set-key (kbd "C-h v") #'helpful-variable)
+(global-set-key (kbd "C-h k") #'helpful-key)
+
+;; Lookup the current symbol at point. C-c C-d is a common keybinding
+;; for this in lisp modes.
+(global-set-key (kbd "C-c C-d") #'helpful-at-point)
+
+;; Look up *F*unctions (excludes macros).
+;;
+;; By default, C-h F is bound to `Info-goto-emacs-command-node'. Helpful
+;; already links to the manual, if a function is referenced there.
+(global-set-key (kbd "C-h F") #'helpful-function)
+
+;; Look up *C*ommands.
+;;
+;; By default, C-h C is bound to describe `describe-coding-system'. I
+;; don't find this very useful, but it's frequently useful to only
+;; look at interactive functions.
+(global-set-key (kbd "C-h C") #'helpful-command)
+
+
 ;;  Emacs minor mode that highlights defined Emacs Lisp symbols in source code.
 ;;  Currently it recognizes Lisp function, built-in function, macro, face and variable names.
 (use-package highlight-defined
   :ensure t)
 (add-hook 'emacs-lisp-mode-hook 'highlight-defined-mode)
+
+
+
 
 
 ;; **  I
