@@ -13,14 +13,15 @@ e28ld='/Applications/Emacs28.2.app/Contents/MacOS/Emacs --with-profile latex28 -
 
 ## Rationale
 The other configurations that I have posted work with Emacs 29.0.5 or emacs 30.
-However, many people use Emacs 28.2 and continue to do so for several years.
-There are slight differences in available features.
+However, many people use Emacs 28.2 and will continue to do so for several years.
+There are slight differences in available features of these configurations.
 In addition, the packages have to be compiled with the corresponding version of the elisp compiler.
 
 ## Where it works
-This configuration works with Mac OS 10.15. 
+This configuration works with Mac OS 10.15 and Mac 13.1. 
 It should work with Windows and Linux out of the box.
-On a 2018 MacBook Pro, Emacs finishes loading and garbage collecting in 17 seconds.
+On a 2018 MacBook Pro, Emacs finishes loading and garbage collecting in about 15 seconds on average.
+The startup could be sped up by replacing use-package with require but the loss of benefits from use-package outweight the gain in reduced start up time
 
 ## Notes
 - The dashboard does not display in a buffer on startup. Invoke and switch to its buffer with Fn-F1.
