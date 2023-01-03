@@ -18,14 +18,14 @@ The other Emacs configurations posted on MooersLab work with Emacs 29.0.5 or ema
 This configuration works with Mac OS 10.15 and Mac 13.1. It should work with Windows and Linux out of the box. On a 2018 MacBook Pro, Emacs finishes loading and garbage collecting in about 15 seconds on average. You can speed up the startup time by replacing `use-package` with `require`, but the loss of benefits from use-package outweighs the gain in reduced startup time.
 
 ## Notes
-- The dashboard does not display in a buffer on startup. Invoke and switch to its buffer with Fn-F1.
+- The dashboard does not display in a buffer on startup. Invoke and switch to its buffer by entering `Fn-F1`.
 
 - I source my yasnippets snippets folder from my default Emacs configuration by using a soft link to the snippets folder in ~./.emacs.defualt30, so adjust as needed. I do this so that I only need to maintain one set of snippet files. Beware that newly added snippets may not appear in the pulldown menu. Hidden files listing the compiled snippets may be interfering with the addition of new snippets. The solution is to enter in the snippets directory the following bash command: **rm -rf ./*/.yas-compiled-snippets.el**. Then select **reload everything** from the yasnippets pulldown menu or enter these commands in the mini-buffer: **M-x yas-recompile-all** and **M-x yas-reload-all**.
 
 ## Structure of the init.el file
-The first part of the `init.el' file has the essential package repository information followed by some basic configurations that are package indepenent.
+The first part of the `init.el' file has the essential package repository information, followed by some basic configurations that are package independent.
 The second part lists the package configurations in alphabetical order.
-The org-aggenda and org-roam sections have my customized capture templates.
+The org-agenda and org-roam sections have my customized capture templates.
 You will likely want to adjust to suit or comment out.
 You may have to change the paths to the corresponding files.
 
