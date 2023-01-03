@@ -969,6 +969,13 @@
 
 ;; ** F
 
+;; https://github.com/sharkdp/fd
+(use-package find-file-in-project
+      :ensure t)
+;; Set fd to be used for file searches with the 
+;; find-file-in-project package.
+(setq ffip-use-rust-fd t)
+
 
 ;; *** FlySpell (spell checking)
 (dolist (flyspellmodes '(text-mode-hook
@@ -986,8 +993,9 @@
 (defun change-dictionary ()
 (interactive)
 (ispell-change-dictionary (if (string-equal ispell-current-dictionary "american")
-							  "norsk"
-							"american")))
+    "norsk"
+    "american")))
+
 
 ;; helm functionality for flyspell. To make it more user friendly
 (use-package helm-flyspell
@@ -1003,6 +1011,9 @@
 ;; Highlights the current section or function.
 (use-package focus
       :ensure t)
+
+
+
 
 ;; ** G
 
@@ -1043,7 +1054,11 @@
 ;; (setq auto-mode-alist (append '(("\\.gp$" . gnuplot-mode)) auto-mode-alist))
 
 
+
+
 ;; ** H
+
+
 ;; *** Helm
 ;; Use ivy or helm but not both.
 ;; (use-package helm
@@ -2619,6 +2634,8 @@ headline under the headline at the current point."
 
 
 ;; ;; ** T
+
+
 ;; ;; *** tabspaces
 ;; ;; Source: 
 ;; 
@@ -2747,14 +2764,14 @@ headline under the headline at the current point."
 ;; Set default connection mode to SSH
 (setq tramp-default-method "ssh")
 
+;; *** Tree-sitter
+(use-package tree-sitter
+    :ensure t)
+(use-package tree-sitter-langs
+    :ensure t)
+(global-tree-sitter-mode)
+(add-hook 'tree-sitter-after-on-hook #'tree-sitter-hl-mode)
 
-;; *** tree-sitter
-
-;; (require 'tree-sitter)
-;; (require 'tree-sitter-langs)
-;; (require 'evil-textobj-tree-sitter)
-;; (global-tree-sitter-mode)
-;; 
 
 
 ;; ;; ** U
@@ -2816,8 +2833,86 @@ headline under the headline at the current point."
 
 
 ;; corfu
+;; Source of configuration below is Minad: https://github.com/minad/corfu
 (use-package corfu
-    :ensure t)
+    :ensure t
+    ;; Optional customizations
+    ;; :custom
+    ;; (corfu-cycle t)                ;; Enable cycling for `corfu-next/previous'
+    ;; (corfu-auto t)                 ;; Enable auto completion
+    ;; (corfu-separator ?\s)          ;; Orderless field separator
+    ;; (corfu-quit-at-boundary nil)   ;; Never quit at completion boundary
+    ;; (corfu-quit-no-match nil)      ;; Never quit, even if there is no match
+    ;; (corfu-preview-current nil)    ;; Disable current candidate preview
+    ;; (corfu-preselect 'prompt)      ;; Preselect the prompt
+    ;; (corfu-on-exact-match nil)     ;; Configure handling of exact matches
+    ;; (corfu-scroll-margin 5)        ;; Use scroll margin
+
+    ;; Enable Corfu only for certain modes.
+    ;; :hook ((prog-mode . corfu-mode)
+    ;;        (shell-mode . corfu-mode)
+    ;;        (eshell-mode . corfu-mode))
+
+    ;; Recommended: Enable Corfu globally.
+    ;; This is recommended since Dabbrev can be used globally (M-/).
+    ;; See also `corfu-excluded-modes'.
+    :init
+    (global-corfu-mode))
+;; Enable auto completion and configure quitting
+(setq corfu-auto t
+      corfu-quit-no-match 'separator) ;; or t
+
+;; Aggressive completion, cheap prefix filtering.
+(setq-local corfu-auto t
+            corfu-auto-delay 0
+            corfu-auto-prefix 0
+            completion-styles '(basic))
+
+;; Enable completeions in minibuffer
+(defun corfu-enable-always-in-minibuffer ()
+  "Enable Corfu in the minibuffer if Vertico/Mct are not active."
+  (unless (or (bound-and-true-p mct--active)
+              (bound-and-true-p vertico--input)
+              (eq (current-local-map) read-passwd-map))
+    ;; (setq-local corfu-auto nil) ;; Enable/disable auto completion
+    (setq-local corfu-echo-delay nil ;; Disable automatic echo and popup
+                corfu-popupinfo-delay nil)
+    (corfu-mode 1)))
+(add-hook 'minibuffer-setup-hook #'corfu-enable-always-in-minibuffer 1)
+
+
+;; Enable completions in eshell
+(add-hook 'eshell-mode-hook
+          (lambda ()
+            (setq-local corfu-auto nil)
+            (corfu-mode)))
+
+
+(defun corfu-send-shell (&rest _)
+  "Send completion candidate when inside comint/eshell."
+  (cond
+   ((and (derived-mode-p 'eshell-mode) (fboundp 'eshell-send-input))
+    (eshell-send-input))
+   ((and (derived-mode-p 'comint-mode)  (fboundp 'comint-send-input))
+    (comint-send-input))))
+
+(advice-add #'corfu-insert :after #'corfu-send-shell)
+
+;; A few more useful configurations...
+ (use-package emacs
+  :ensure t
+  :init
+  ;; TAB cycle if there are only few candidates
+  (setq completion-cycle-threshold 3)
+
+  ;; Emacs 28: Hide commands in M-x which do not apply to the current mode.
+  ;; Corfu commands are hidden, since they are not supposed to be used via M-x.
+  ;; (setq read-extended-command-predicate
+  ;;       #'command-completion-default-include-p)
+
+  ;; Enable indentation+completion using the TAB key.
+  ;; `completion-at-point' is often bound to M-TAB.
+  (setq tab-always-indent 'complete))
 
 
 
