@@ -20,7 +20,7 @@ This configuration works with Mac OS 10.15 and Mac 13.1. It should work with Win
 ## Notes
 - The dashboard does not display in a buffer on startup. Invoke and switch to its buffer by entering `Fn-F1`.
 
-- I source my yasnippets snippets folder from my default Emacs configuration by using a soft link to the snippets folder in ~./.emacs.defualt30, so adjust as needed. I do this so that I only need to maintain one set of snippet files. Beware that newly added snippets may not appear in the pulldown menu. Hidden files listing the compiled snippets may be interfering with the addition of new snippets. The solution is to enter in the snippets directory the following bash command: `rm -rf ./*/.yas-compiled-snippets.el`. Then select `reload everything` from the yasnippets pulldown menu or enter these commands in the mini-buffer: `M-x yas-recompile-all** and **M-x yas-reload-all`.
+- I source my yasnippets snippets folder from my default Emacs configuration by using a soft link to the snippets folder in ~./.emacs.defualt30, so adjust as needed. I do this so that I only need to maintain one set of snippet files. Beware that newly added snippets may not appear in the pulldown menu. Hidden files listing the compiled snippets may be interfering with the addition of new snippets. The solution is to enter in the snippets directory the following bash command: `rm -rf ./*/.yas-compiled-snippets.el`. Then select `reload everything` from the yasnippets pulldown menu or enter these commands in the mini-buffer: `M-x yas-recompile-all` and `M-x yas-reload-all`.
 
 ## Structure of the init.el file
 The first part of the `init.el' file has the essential package repository information, followed by some basic configurations that are package independent.
