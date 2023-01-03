@@ -4,7 +4,7 @@
 This configuration supports writing in LaTeX and Org-mode.
 Git clone to latex-emacs28 to avoid subsequent editing of file paths.
 
-I have to use chemacs2 to run this profile in parallel to the default configuration because Emacs 28.2 does not support selecting a profile on startup.
+I have to use chemacs2 to run this profile parallel to the default configuration because Emacs 28.2 does not support selecting a profile on startup.
 I have added the following alias to my .bashAppAliases file in my home directory to start Emacs 28 with this configuration.
 
 ```bash
