@@ -3,17 +3,18 @@
 ## Quick start
 This configuration supports writing in LaTeX and Org-mode.
 Git clone to latex-emacs28 to avoid subsequent editing of file paths.
+I do not hide this folder by prepending its names with a period.
 
-I have to use [chemacs2](https://github.com/plexus/chemacs2) to run this profile parallel to the default configuration because Emacs 28.2 does not support selecting a profile on startup.
+I use [chemacs2](https://github.com/plexus/chemacs2) to run this profile parallel to the default Emacs configuration in `.emacs.default30` because Emacs 28.2 does not support selecting a profile on startup.
 I have added the following alias to my .bashAppAliases file in my home directory to start Emacs 28 with this configuration by entering `e28ld`.
-I take this approach because I have Emacs versions28, 29 and 30 installed.
+I take this approach because I have Emacs versions 28, 29 and 30 installed.
 
 ```bash
 e28ld='/Applications/Emacs28.2.app/Contents/MacOS/Emacs --with-profile latex28 --debug-init'
 ```
 
 ## Rationale
-The other Emacs configurations posted on MooersLab work with Emacs 29.0.5 or emacs 30. However, many people use Emacs 28.2 and will continue to do so for several years. There are slight differences in the available features of these configurations. In addition, the packages have to be compiled with the corresponding version of the elisp compiler.
+The other Emacs configurations posted on MooersLab work with Emacs 29.0.5 or 30.0.5. However, many people use Emacs 28.2 and will continue to do so for several years. There are slight differences in the available features of these configurations. In addition, the packages have to be compiled with the corresponding version of the elisp compiler. So far, my `.emacs.default30` folder has been able to serve Emacs 28.2 and 30.0.5. I might have to make separate `.emacs.default` folders for each version.
 
 ## Where it works
 This configuration works with Mac OS 10.15 and Mac 13.1. It should work with Windows and Linux out of the box. On a 2018 MacBook Pro, Emacs finishes loading and garbage collecting in about 15 seconds on average. You can speed up the startup time by replacing `use-package` with `require`, but the loss of benefits from use-package outweighs the gain in reduced startup time.
