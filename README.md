@@ -1,3 +1,7 @@
+![Version](https://img.shields.io/static/v1?label=latexemacs28&message=0.2&color=brightcolor)
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
+
+
 # LaTeX configuration file that works with Emacs version 28.2
 
 ## Quick start
@@ -7,7 +11,7 @@ I do not hide this folder by prepending its names with a period.
 
 I use [chemacs2](https://github.com/plexus/chemacs2) to run this profile parallel to the default Emacs configuration in `.emacs.default30` because Emacs 28.2 does not support selecting a profile on startup.
 I have added the following alias to my .bashAppAliases file in my home directory to start Emacs 28 with this configuration by entering `e28ld`.
-I take this approach because I have Emacs versions 28, 29 and 30 installed.
+I take this approach because I have Emacs versions 28, 29, and 30 installed.
 
 ```bash
 e28ld='/Applications/Emacs28.2.app/Contents/MacOS/Emacs --with-profile latex28 --debug-init'
@@ -27,7 +31,7 @@ This configuration works with Mac OS 10.15 and Mac 13.1. It should work with Win
 - To use org-pomodoro, you have to create a logbook under a TODO item in an org file with `C-c C-x TAB` and place the cursor (the point) on the headline of the TODO item and enter `C-c o` to start a "pom". I use one of my org-agenda files for this purpose. These are opened in Emacs when I fire up org-agenda with the `C-c a a` keybinding.
 
 ## Structure of the init.el file
-The first part of the `init.el' file has the essential package repository information, followed by some basic configurations that are package independent.
+The first part of the `init.el' file contains the essential package repository information, followed by some basic configurations that are package-independent.
 The second part lists the package configurations in alphabetical order.
 The org-agenda and org-roam sections have my customized capture templates.
 You will likely want to adjust to suit or comment out.
@@ -51,3 +55,13 @@ I am using the *ef-day* theme from the *ef-themes* package by Protesilaos Stavro
 - [Snippets for latex-mode in Emacs](https://github.com/MooersLab/snippet-latex-mode) My LaTeX code snippets for yasnippets.
 - [The Writer's Creed](https://github.com/MooersLab/thewriterslaw) Guidelines for greater productivity.
 
+
+## Update history
+|Version      | Changes                                                                                                                                    | Date                 |
+|:-----------:|:------------------------------------------------------------------------------------------------------------------------------------------:|:--------------------:|
+| Version 0.2 |  Added badges and update table.                                                                                                            | 2024 May 4           |
+
+
+## Funding
+- NIH: R01 CA242845, R01 AI088011
+- NIH: P30 CA225520 (PI: R. Mannel); P20GM103640 and P30GM145423 (PI: A. West)
